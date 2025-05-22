@@ -1,9 +1,21 @@
-KP = [5.59, 6.61, 7.21, 7.55, 8.57]
+import streamlit as st
 
-KP = sum(KP) / len(KP)
-print("CGPA:", KP)
+st.title("🎓 CGPA Calculator")
 
-VR = [6.35, 7.17, 8.21, 8.09, 8.57]
+st.write("Enter your grades for each subject to calculate your CGPA.")
 
-VR = sum(VR) / len(VR)
-print("CGPA:", VR)
+# Input number of subjects
+num_subjects = st.number_input("Enter number of subjects", min_value=1, step=1)
+
+grades = []
+
+for i in range(num_subjects):
+    grade = st.number_input(f"Enter CGPA for Subject {i + 1}", min_value=0.0, max_value=10.0, step=0.01)
+    grades.append(grade)
+
+if st.button("Calculate CGPA"):
+    if len(grades) > 0:
+        cgpa = sum(grades) / len(grades)
+        st.success(f"🎉 Your CGPA is: {cgpa:.2f}")
+    else:
+        st.warning("Please enter valid grades.")
