@@ -9,7 +9,7 @@ num_semester = st.number_input("Enter number of Semesters", min_value=1, step=1)
 
 grades = []
 
-for i in range(num_subjects):
+for i in range(num_semester):
     grade = st.number_input(f"Enter CGPA for Semester {i + 1}", min_value=0.0, max_value=10.0, step=0.01)
     grades.append(grade)
 
